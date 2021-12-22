@@ -92,7 +92,7 @@ fn main() {
     }
 
     let mut verts = Vec::new();
-    for _ in 0..10_000_000 {
+    for _ in 0..1_000_000 {
         verts.push(Vertex { position: [0.0, 0.5, 0.0], color: [1.0, 0.0, 0.0] });
         verts.push(Vertex { position: [-0.5, -0.5, 0.0], color: [0.0, 1.0, 0.0] });
         verts.push(Vertex { position: [0.5, -0.5, 0.0], color: [0.0, 0.0, 1.0] });
@@ -285,8 +285,9 @@ fn main() {
                 frames += 1;
                 println!("Frame {} | {}",
                     frames, frames as f64 / it.elapsed().as_secs_f64());
-
-                //window.request_redraw();
+            },
+            Event::MainEventsCleared => {
+                window.request_redraw();
             },
             _ => {
                 // Unhandled event
